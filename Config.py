@@ -10,9 +10,10 @@ page_details = {
 }
 menu = {
     '.' : ['home2','home'],
-    'contact': ['address_book','CONTACT'],
-    'admission': ['library_books','OUR COUSES'],
-    'about': []
+    'about': ['address-book','Contact'],
+    'courses': ['library_books','Our Courses',['Math','Science and Engineering','Arts and Humanities','Economics and Finance','Business Administration','Computer Science']],
+    'campus': ['building', 'Our Campus', ['Academic','News', 'Our Interns','Our Leadership','Careers','Humsn Resources']],
+    'contact':['phone_android', 'Contact']
 
 }
 

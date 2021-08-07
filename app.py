@@ -7,7 +7,10 @@ app = Flask(__name__)
 app.debug = True
 @app.context_processor
 def details():
-    return dict(pd=page_details, replacer=replacer)
+    pageinformation = {
+        'menu' : menu
+    }
+    return dict(pd=page_details, replacer=replacer , info=pageinformation)
 
 
 @app.route('/about')
@@ -28,7 +31,7 @@ def contact():
     return render_template('contact1.html', pg=pageinfo)
 
 
-@app.route('/hello')
+@app.route('/')
 def index():
     pageinfo = {
         'title': 'Welcome',

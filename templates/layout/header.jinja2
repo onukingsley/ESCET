@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="/static/https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
     <link rel="stylesheet"
-          href="/static/A.fonts%2c%2c_icomoon%2c%2c_style.css%2bcss%2c%2c_bootstrap.min.css%2bcss%2c%2c_jquery-ui.css%2bcss%2c%2c_owl.carousel.min.css%2bcss%2c%2c_owl.theme.default.min.css%2bcss%2c%2c_owl.theme.default.min.css%2bcss%2c%2c_jq"/>
-    <link href="/static/css/A.jquery.mb.YTPlayer.min.css.pagespeed.cf.N2G3N4O1x5.css" media="all" rel="stylesheet"
+          href="/sta/A.fonts%2c%2c_icomoon%2c%2c_style.css%2bcss%2c%2c_bootstrap.min.css%2bcss%2c%2c_jquery-ui.css%2bcss%2c%2c_owl.carousel.min.css%2bcss%2c%2c_owl.theme.default.min.css%2bcss%2c%2c_owl.theme.default.min.css%2bcss%2c%2c_jq"/>
+    <link href="/sta/css/A.jquery.mb.YTPlayer.min.css.pagespeed.cf.N2G3N4O1x5.css" media="all" rel="stylesheet"
           type="text/css">
     <link rel="stylesheet" href="/static/css/A.style.css.pagespeed.cf.SghS18xLJ1.css">
 </head>
@@ -51,26 +51,28 @@
                 <div class="mr-auto">
                     <nav class="site-navigation position-relative text-right" role="navigation">
                         <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                            <li>
-                                <a href="index.html" class="nav-link text-left">Home</a>
+                            {% for foo in info['menu'] %}
+                                {% if not info['menu'][foo][2] %}
+                                     <li>
+                                <a href="/{{foo}}" class="nav-link text-left"><i class = "icon-{{ info['menu'][foo][0] }}"></i> {{ info['menu'][foo][1]|title }}</a>
                             </li>
-                            <li class="has-children active">
-                                <a href="about.html" class="nav-link text-left">About Us</a>
+                                    {% else %}
+                                         <li class="has-children active">
+                                <a href="{{foo}}" class="nav-link text-left"><i class = "icon-{{ info['menu'][foo][0] }}"></i> {{ info['menu'][foo][1]|title }}</a>
                                 <ul class="dropdown">
-                                    <li><a href="teachers.html">Our Teachers</a></li>
-                                    <li><a href="about.html">Our School</a></li>
+                                    {% for menu in info['menu'][2] %}
+                                        <a href="/{{menu}}" class="nav-link text-left black-colour"><i class = "icon-{{ info['menu'][menu][0] }}"></i> {{ info['menu'][menu][2]|title }}</a>
+                                       {# <li><a href="{{ foo }}">{{ info['menu'][foo][2]|title }}</a></li>#}
+                                    {% endfor %}
+
+
+
+
                                 </ul>
                             </li>
-                            <li>
-                                <a href="admissions.html" class="nav-link text-left">Admissions</a>
-                            </li>
-                            <li>
-                                <a href="courses.html" class="nav-link text-left">Courses</a>
-                            </li>
-                            <li>
-                                <a href="contact.html" class="nav-link text-left">Contact</a>
-                            </li>
-                        </ul>
+                                {% endif %}
+                            {% endfor %}
+
                         </ul>
                     </nav>
                 </div>
