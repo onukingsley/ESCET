@@ -8,16 +8,24 @@ app.debug = True
 @app.context_processor
 def details():
     pageinformation = {
-        'menu' : menu
+        'menu' : menu,
+        'header': header,
     }
     return dict(pd=page_details, replacer=replacer , info=pageinformation)
 
 
 @app.route('/about')
 def hello_world():
+
+    url = 'https://newsapi.org/v2/top-headlines?country=ng&category=science&apiKey=819b3b2ae72f4ed48335a601245879c9'
+    news = request('GET', url)
+    news = json.loads(news)
+    print (news.content)
     pageinfo = {
         'title' : 'about us',
         'sub' : 'college of education enugu (technical) is an instutition built on knowledge and hardwork'
+
+
     }
     return render_template('about.html', pg=pageinfo)
 
