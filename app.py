@@ -17,10 +17,8 @@ def details():
 @app.route('/about')
 def hello_world():
 
-    url = 'https://newsapi.org/v2/top-headlines?country=ng&category=science&apiKey=819b3b2ae72f4ed48335a601245879c9'
-    news = request('GET', url)
-    news = json.loads(news)
-    print (news.content)
+
+
     pageinfo = {
         'title' : 'about us',
         'sub' : 'college of education enugu (technical) is an instutition built on knowledge and hardwork'
@@ -41,9 +39,13 @@ def contact():
 
 @app.route('/')
 def index():
+    url = 'https://newsapi.org/v2/top-headlines?country=ng&category=science&apiKey=819b3b2ae72f4ed48335a601245879c9'
+    news = request('GET', url)
+    news = json.loads(news.content)
+    result = news['articles']
     pageinfo = {
         'title': 'Welcome',
-
+        'news': result,
     }
     return render_template('index1.html', pg=pageinfo)
 
@@ -65,3 +67,9 @@ def admission():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+# url = 'https://newsapi.org/v2/top-headlines?country=ng&category=science&apiKey=819b3b2ae72f4ed48335a601245879c9'
+# news = request('GET', url)
+# news = json.loads(news.content)
+# print (news)
