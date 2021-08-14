@@ -39,10 +39,14 @@ def contact():
 
 @app.route('/')
 def index():
-    url = 'https://newsapi.org/v2/top-headlines?country=ng&category=science&apiKey=819b3b2ae72f4ed48335a601245879c9'
-    news = request('GET', url)
-    news = json.loads(news.content)
-    result = news['articles']
+    try:
+        url = 'https://newsapi.org/v2/top-headlines?country=ng&category=science&apiKey=819b3b2ae72f4ed48335a601245879c9'
+        news = request('GET', url)
+        news = json.loads(news.content)
+        result = news['articles']
+
+    except Exception as err:
+        print(err)
     pageinfo = {
         'title': 'Welcome',
         'news': result,
@@ -64,6 +68,30 @@ def admission():
         'sub': 'our addmission is available now'
     }
     return render_template('admissions.html',pg=pageinfo)
+
+@app.route('/register')
+def register():
+    pageinfo = {
+        'title': 'Register',
+        'sub': 'our addmission is available now'
+    }
+    return render_template('register.html',pg=pageinfo)
+
+@app.route('/login')
+def login():
+    pageinfo = {
+        'title': 'Admission',
+        'sub': 'our addmission is available now'
+    }
+    return render_template('register.html',pg=pageinfo)
+
+@app.route('/dashboard')
+def dashboard():
+    pageinfo = {
+        'title': 'admission',
+        'sub': 'our addmission is available now'
+    }
+    return render_template('Dashboard/index.html',pg=pageinfo)
 
 if __name__ == '__main__':
     app.run(debug=True)

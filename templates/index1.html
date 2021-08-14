@@ -340,9 +340,14 @@
                                 </div>
                             </div>
                         </div>
+                         {% endif %}
+                        {% endfor %}
 
-                         {% elif loop.index>1 and loop.index<5 %}
-                             <div class="col-lg-6">
+
+                        <div class="col-lg-6">
+                        {% for foo in pg['news'] %}
+                         {%if loop.index>1 and loop.index<5 %}
+
                             <div class="post-entry-big horizontal d-flex mb-4">
                                 <a href="{{foo['url']}}" class="img-link mr-4"><img src="{{foo['urlToImage']}}" alt="Image" class="img-fluid"></a>
                                 <div class="post-content">
@@ -354,12 +359,13 @@
                                     <h3 class="post-heading"><a href="news-single.html">{{foo['description']}}</a></h3>
                                 </div>
                             </div>
-
-                        </div>
                             {% endif %}
+                            {% endfor %}
+                        </div>
 
-                        {% endfor %}
-                        
+
+
+
                         
                         
                        
