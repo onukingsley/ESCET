@@ -4,25 +4,23 @@ from Config import *
 
 app = Flask(__name__)
 
-app.debug = True
+
+
+
 @app.context_processor
 def details():
     pageinformation = {
-        'menu' : menu,
+        'menu': menu,
         'header': header,
     }
-    return dict(pd=page_details, replacer=replacer , info=pageinformation)
+    return dict(pd=page_details, replacer=replacer, info=pageinformation)
 
 
 @app.route('/about')
 def hello_world():
-
-
-
     pageinfo = {
-        'title' : 'about us',
-        'sub' : 'college of education enugu (technical) is an instutition built on knowledge and hardwork'
-
+        'title': 'about us',
+        'sub': 'college of education enugu (technical) is an instutition built on knowledge and hardwork'
 
     }
     return render_template('about.html', pg=pageinfo)
@@ -53,13 +51,15 @@ def index():
     }
     return render_template('index1.html', pg=pageinfo)
 
+
 @app.route('/courses')
 def courses():
     pageinfo = {
         'title': 'courses',
         'sub': 'so many courses to learn, there is no limit to learning'
     }
-    return render_template('courses.html', pg=pageinfo)
+    return render_template('courseds.html', pg=pageinfo)
+
 
 @app.route('/admission')
 def admission():
@@ -67,7 +67,8 @@ def admission():
         'title': 'admission',
         'sub': 'our addmission is available now'
     }
-    return render_template('admissions.html',pg=pageinfo)
+    return render_template('admissions.html', pg=pageinfo)
+
 
 @app.route('/register')
 def register():
@@ -75,7 +76,8 @@ def register():
         'title': 'Register',
         'sub': 'our addmission is available now'
     }
-    return render_template('register.html',pg=pageinfo)
+    return render_template('register.html', pg=pageinfo)
+
 
 @app.route('/login')
 def login():
@@ -83,21 +85,28 @@ def login():
         'title': 'Admission',
         'sub': 'our addmission is available now'
     }
-    return render_template('register.html',pg=pageinfo)
+    return render_template('register.html', pg=pageinfo)
 
-@app.route('/dashboard')
-def dashboard():
-    pageinfo = {
-        'title': 'admission',
-        'sub': 'our addmission is available now'
-    }
-    return render_template('Dashboard/index.html',pg=pageinfo)
+
+# ERROR HANDLING
+@app.errorhandler(404)
+@app.route("/404")
+def error404(error=''):
+   return render_template('Dashboard/error_400.html')
+
+@app.errorhandler(500)
+@app.route("/500")
+def error500(error=''):
+   return render_template('Dashboard/error_500.html')
+
+@app.errorhandler(401)
+@app.route("/401")
+def error401(error=''):
+   return render_template('Dashboard/error_401.html')
+
+
+from admin import *
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
-
-# url = 'https://newsapi.org/v2/top-headlines?country=ng&category=science&apiKey=819b3b2ae72f4ed48335a601245879c9'
-# news = request('GET', url)
-# news = json.loads(news.content)
-# print (news)
+    app.run()
+    # app.run(debug=True)
