@@ -89,10 +89,10 @@ def register():
 @app.route('/login')
 def login():
     pageinfo = {
-        'title': 'Admission',
-        'sub': 'our addmission is available now'
+        'title': 'Login',
+        'sub': 'Login to students portal'
     }
-    return render_template('register.html', pg=pageinfo)
+    return render_template('login.html', pg=pageinfo)
 
 
 # ERROR HANDLING
@@ -116,4 +116,5 @@ from admin import *
 
 if __name__ == '__main__':
     # app.run()
+    app.secret_key = 'SECRET KEY'
     app.run(debug=True)
