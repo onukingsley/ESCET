@@ -4,7 +4,7 @@ from Config import *
 
 app = Flask(__name__)
 
-
+app.debug = True
 
 
 @app.context_processor
@@ -13,17 +13,24 @@ def details():
         'menu': menu,
         'header': header,
     }
-    return dict(pd=page_details, replacer=replacer, info=pageinformation)
+    return dict(pd=page_details, replacer=replacer, info=pageinformation, temp=temp)
 
 
 @app.route('/about')
 def hello_world():
+
+    url = "https://samples.openweathermap.org/data/2.5/forecast?id=524901&appid=b1b15e88fa797225412429c1c50c122a1"
+
+    response = request("GET", url)
+    result = json.loads(response._content)
+
+
     pageinfo = {
         'title': 'about us',
-        'sub': 'college of education enugu (technical) is an instutition built on knowledge and hardwork'
-
+        'sub': 'college of education enugu (technical) is an instutition built on knowledge and hardwork',
+        'result': result
     }
-    return render_template('about.html', pg=pageinfo)
+    return render_template('about.html', pg=pageinfo )
 
 
 @app.route('/contact')
@@ -108,5 +115,5 @@ def error401(error=''):
 from admin import *
 
 if __name__ == '__main__':
-    app.run()
-    # app.run(debug=True)
+    # app.run()
+    app.run(debug=True)
