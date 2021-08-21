@@ -1,27 +1,36 @@
 {% include 'layout/header.jinja2' %}
 
 <div class="site-section">
-<div class="container">
-<div class="row justify-content-center">
-<div class="col-md-5">
-<div class="row">
-<div class="col-md-12 form-group">
-<label for="username">Username</label>
-<input type="text" id="username" class="form-control form-control-lg">
-</div>
-<div class="col-md-12 form-group">
-<label for="pword">Password</label>
-<input type="text" id="pword" class="form-control form-control-lg">
-</div>
-</div>
-<div class="row">
-<div class="col-12">
-<input type="submit" value="Log In" class="btn btn-primary btn-lg px-5">
-</div>
-</div>
-</div>
-</div>
-</div>
+    <div class="container">
+{#         <form action="/signin" id="signinform" method="POST">#}
+         <form method="post" id="signinform">
+             <div class="row justify-content-center">
+
+                <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" class="form-control form-control-lg">
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <label for="pword">Password</label>
+                        <input type="text" id="password" name="password" class="form-control form-control-lg">
+                    </div>
+                    <div>
+                        <input type="checkbox" id="checkbox" name="checkbox">
+                        <label for="checkbox">Remeber me?</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary btn-lg px-5" id="btnlogin">LogIn</button>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        </form>
+    </div>
 </div>
 
 {% include 'layout/footer.jinja2' %}
