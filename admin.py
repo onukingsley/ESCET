@@ -70,7 +70,7 @@ def sign():
             Dbpassword = result[0][0]
             if cr.verify(psword,Dbpassword) :
                 me = loaduser(user)
-                login_user(me)
+                login_user(me, remember=rem)
                 msg = "ok"
                 # return redirect('/sign_in/<user>')
             else:

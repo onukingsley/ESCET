@@ -1,26 +1,27 @@
 
 
-// $('#btnlogin').click(function (e) {
-//     alert(hello);
-//     e.preventDefault();
-//     frm = $('#signinform');
-//     btn = $('this');
-//     btn.html("<i class='fa fa-cog fa-spin'></i>processing");
-//
-//     $.ajax({
-//         url: '/signin',
-//         method: 'POST',
-//         data: frm.serialize(),
-//        success: function (data) {
-//             if(data !== 'ok'){
-//                 alert('hello')
-//                 btn.html('login')
-//             }
-//        }
-//
-//     })
-//
-// })
+/*$('#signinform').submit(function (e) {
+    e.preventDefault();
+    frm = $('#signinform');
+    btn = $('#btnlogin');
+    btn.html("<i class='fa fa-cog fa-spin'></i>processing");
+
+    $.ajax({
+        url: '/signin',
+        method: 'POST',
+        data: frm.serialize(),
+       success: function (data) {
+            if(data != 'ok'){
+                alert('hello')
+                btn.html('login')
+            }else{
+                alert('boo')
+            }
+       }
+
+    })
+
+})*/
 
 $('#signinform').submit(function (e) {
     e.preventDefault();
